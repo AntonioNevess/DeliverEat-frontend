@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route, Navigate, BrowserRouter as Router } from 'react-router-dom';
 
-function App() {
+import MainNavBar from './Views/MainNavBar';
+import Pedidos from './Views/Pedidos';
+import Pessoas from './Views/Pessoas';
+import Pratos from './Views/Pratos';
+import Restaurantes from './Views/Restaurantes';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <MainNavBar />
+        <Routes>
+          <Route path="/" element={<Navigate to="/Home" />}/>
+          <Route path="/pedidos" element={<Pedidos />} />
+          <Route path="/pessoas" element={<Pessoas />} />
+          <Route path="/pratos" element={<Pratos />} />
+          <Route path="/restaurantes" element={<Restaurantes />} />
+        </Routes>
+      </Router>
+    </React.Fragment>
   );
 }
-
-export default App;
