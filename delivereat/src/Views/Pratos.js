@@ -1,30 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-const pratos = [
-    { id: 1, name: 'Prato A' },
-    { id: 2, name: 'Prato B' },
-    { id: 3, name: 'Prato C' },
-    // Add more dishes as needed
-];
+function Pratos() {
+  const { restauranteId } = useParams();
+  const [listaPratos, setListaPratos] = useState([]);
 
-const Pratos = () => {
-    return (
-        <div>
-            <h2>Pratos</h2>
-            <div className="row">
-                {pratos.map(prato => (
-                    <div key={prato.id} className="col-md-4 mb-4">
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">{prato.name}</h5>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+  useEffect(() => {
+    fetchPratos();
+  }, []);
+
+  async function fetchPratos() {
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch(
+      `https://localhost:7101/api/PratosAPI?restauranteId=${restauranteId}`,
+      requestOptions
+    )
+      .then(res => res.json())
+      .then(result => {
+        setListaPratos(result);
+        console.log(listaPratos);
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
+  }
+
+  const pratoItems = listaPratos.map(prato => (
+    <div key={prato.nome} className="col-md-4 mb-4">
+      <div className="card">
+        <div className="card-body">
+          <h5 className="card-title">{prato.nome}</h5>
         </div>
-    );
-};
+      </div>
+    </div>
+  ));
+
+  return (
+    <div>
+      <h2>Pratos</h2>
+      <div className="row">{pratoItems}</div>
+    </div>
+  );
+}
 
 export default Pratos;

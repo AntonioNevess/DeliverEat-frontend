@@ -16,9 +16,6 @@ const MainNavBar = () => {
                             <Link className="nav-link" to="/pedidos">Pedidos</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/pratos">Pratos</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link className="nav-link" to="/restaurantes">Restaurantes</Link>
                         </li>
                         <li className="nav-item">

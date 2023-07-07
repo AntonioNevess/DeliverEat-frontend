@@ -17,7 +17,7 @@ export default function App() {
           <Route path="/" element={<Navigate to="/Home" />}/>
           <Route path="/pedidos" element={<Pedidos />} />
           <Route path="/pessoas" element={<Pessoas />} />
-          <Route path="/pratos" element={<Pratos />} />
+          <Route path="/pratos/:restauranteId" element={<Pratos />} />
           <Route path="/restaurantes" element={<Restaurantes />} />
           <Route path="/login" element={<Login />} />
         </Routes>
