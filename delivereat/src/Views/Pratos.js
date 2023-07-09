@@ -16,7 +16,7 @@ function Pratos() {
     };
 
     fetch(
-      `https://localhost:7101/api/PratosAPI?restauranteId=${restauranteId}`,
+      `https://alix-dweb.azurewebsites.net/api/PratosAPI?restauranteId=${restauranteId}`,
       requestOptions
     )
       .then(res => res.json())

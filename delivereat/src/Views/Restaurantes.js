@@ -18,7 +18,7 @@ class Restaurantes extends React.Component {
       redirect: 'follow'
     };
 
-    fetch('https://localhost:7101/api/RestaurantesAPI', requestOptions)
+    fetch('https://alix-dweb.azurewebsites.net/api/RestaurantesAPI', requestOptions)
       .then(res => res.json())
       .then(result =>
         this.setState({ listaRestaurantes: result }, () =>
@@ -45,7 +45,7 @@ class Restaurantes extends React.Component {
       body: JSON.stringify(obj)
     };
 
-    fetch('https://localhost:7101/api/RestaurantesAPI/create', requestOptions)
+    fetch('https://alix-dweb.azurewebsites.net/api/RestaurantesAPI/create', requestOptions)
       .then(res => res.json())
       .then(result =>
         this.setState({ listaRestaurantes: result }, () =>

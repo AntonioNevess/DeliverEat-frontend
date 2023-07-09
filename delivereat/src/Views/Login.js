@@ -21,7 +21,7 @@ class Login extends Component {
             redirect: 'follow'
         };
     
-        fetch("https://localhost:7100/api/PessoasAPI", requestOptions)
+        fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI", requestOptions)
             .then(res => res.json())
             .then(result => this.setState({ listaPessoas : result }, () => console.log(this.state.listaPessoas)))
             .catch(error => { console.log('error', error) });
@@ -89,7 +89,7 @@ class Login extends Component {
         };
 
 
-        fetch("https://localhost:7100/api/PessoasAPI/create", requestOptions)
+        fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI/create", requestOptions)
             .then(res => res.json())
             .then(result => { console.log(result);
                 this.fetchPessoas();
@@ -109,7 +109,7 @@ class Login extends Component {
         };
 
 
-        fetch("https://localhost:7100/api/PessoasAPI/login", requestOptions)
+        fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI/login", requestOptions)
             .then(res => res.json())
             .then(result => { console.log(result);
                 this.fetchPessoas();
@@ -126,7 +126,7 @@ class Login extends Component {
             },
         };
 
-        fetch("https://localhost:7100/api/PessoasAPI/logout", requestOptions)
+        fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI/logout", requestOptions)
             .then(res => res.json())
             .then(result => { console.log(result)})
             .catch(error => { console.log('error', error) });
