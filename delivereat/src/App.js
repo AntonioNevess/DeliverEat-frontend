@@ -7,6 +7,7 @@ import Pessoas from './Views/Pessoas';
 import Pratos from './Views/Pratos';
 import Restaurantes from './Views/Restaurantes';
 import Login from './Views/Login';
+import DetalhesPedidos from './Views/DetalhesPedidos';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/pratos/:restauranteId" element={<Pratos />} />
           <Route path="/restaurantes" element={<Restaurantes />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/DetalhesPedido" element={<DetalhesPedidos />}/>
         </Routes>
       </Router>
     </React.Fragment>

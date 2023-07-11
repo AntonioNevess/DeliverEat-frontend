@@ -21,7 +21,11 @@ const MainNavBar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Register/Login</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/DetalhesPedido">Detalhes Pedido</Link>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
