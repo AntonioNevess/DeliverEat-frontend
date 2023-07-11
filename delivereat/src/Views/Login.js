@@ -1,33 +1,38 @@
 import React, { Component } from 'react'
 
+//O grupo composto por Dinis Silva e Francisco Silva ajudaram com a parte do login e Registo fornecendo código e ajudando a perceber como fazer
+
 class Login extends Component {
     constructor(props) {
         super(props);
     }
     
+    //iniciliazação do state
     state = { 
-        login : {Email:"", Password:""},
-        novaPessoa : {Nome:"", Email:"", Password:"", Telefone:"", Rua:"", CP:"", Localidade:""},
-        listaPessoas: [],
+        login : {Email:"", Password:""}, //objeto para o login
+        novaPessoa : {Nome:"", Email:"", Password:"", Telefone:"", Rua:"", CP:"", Localidade:""}, //objeto para criar nova pessoa
+        listaPessoas: [], //array para guardar a lista de pessoas
     };
 
+    //fetch para obter a lista de pessoas
     async componentDidMount() {
-        this.fetchPessoas();
+        this.fetchPessoas(); 
     }
 
+    //fetch para obter a lista de pessoas
     async fetchPessoas() {
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
-    
+            
         fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI", requestOptions)
             .then(res => res.json())
             .then(result => this.setState({ listaPessoas : result }, () => console.log(this.state.listaPessoas)))
             .catch(error => { console.log('error', error) });
     }
 
-        //handle para Registo
+    //handles para Registo
     HandleChange = (event) => {
         const { name, value } = event.target;
     
@@ -35,7 +40,7 @@ class Login extends Component {
             novaPessoa: { ...prevState.novaPessoa, [name]: value }
         }));
     }
-
+    
     HandleSubmit = (event) => {
         event.preventDefault();
         const { novaPessoa } = this.state;
@@ -54,7 +59,7 @@ class Login extends Component {
         }});
     }
 
-    //handle para Login
+    //handles para Login
     HandleChangeLogin = (event) => {
         const { name, value } = event.target;
     
@@ -62,7 +67,7 @@ class Login extends Component {
             login: { ...prevState.login, [name]: value }
         }));
     }
-
+    
     HandleSubmitLogin = (event) => {
         event.preventDefault();
         const { login } = this.state;
@@ -76,6 +81,7 @@ class Login extends Component {
         }});
     }
 
+    //função para fazer o registo
     createPessoas(novaPessoa) {
         console.log("Criar Pessoa!");
         var requestOptions = {
@@ -88,7 +94,7 @@ class Login extends Component {
             body: JSON.stringify(novaPessoa)
         };
 
-
+        //fetch para o registo
         fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI/create", requestOptions)
             .then(res => res.json())
             .then(result => { console.log(result);
@@ -97,6 +103,7 @@ class Login extends Component {
             .catch(error => { console.log('error', error) });
     }
     
+    //função para login
     loginPessoas(obj) {
         var requestOptions = {
             method: 'POST',
@@ -108,7 +115,7 @@ class Login extends Component {
             body: JSON.stringify(obj)
         };
 
-
+        //fetch para o login
         fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI/login", requestOptions)
             .then(res => res.json())
             .then(result => { console.log(result);
@@ -117,6 +124,7 @@ class Login extends Component {
             .catch(error => { console.log('error', error) });
     }
 
+    //função para logout
     logoutPessoas() {
         var requestOptions = {
             method: 'POST',
@@ -126,6 +134,7 @@ class Login extends Component {
             },
         };
 
+        //fetch para logout
         fetch("https://alix-dweb.azurewebsites.net/api/PessoasAPI/logout", requestOptions)
             .then(res => res.json())
             .then(result => { console.log(result)})
@@ -140,7 +149,7 @@ class Login extends Component {
         <React.Fragment>
             <div className="row">
                 <div className="col-md-6">
-                    {/* Registration Section */}
+                    {/* Registo */}
                     <h3>Register</h3>
                     <form onSubmit={this.HandleSubmit}>
                         <div className="form-group">
@@ -235,7 +244,7 @@ class Login extends Component {
                 </div>
 
                 <div className="col-md-6">
-                    {/* Login Section */}
+                    {/* Login */}
                     <h3>Login</h3>
                     <form onSubmit={this.HandleSubmitLogin}>
                         <div className="form-group">

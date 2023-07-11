@@ -4,11 +4,13 @@ class DetalhesPedidos extends Component {
   constructor(props) {
     super(props);
 
+    //iniciliazação do state
     this.state = {
-      DetalhesPedidos: [], // Array to store the DetalhesPedidos
+      DetalhesPedidos: [], // Array para guardar os DetalhesPedidos
     };
   }
 
+  //
   componentDidMount() {
     this.fetchDetalhesPedidos();
   }
@@ -24,6 +26,7 @@ class DetalhesPedidos extends Component {
       });
   }
 
+  // Adicionar um novo DetalhePedido
   addDetalhesPedido() {
     const newDetalhesPedido = {
       id: this.state.DetalhesPedidos.length + 1,

@@ -13,19 +13,15 @@ const MainNavBar = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/pedidos">Pedidos</Link>
+                            <Link className="nav-link" to="/restaurantes">Restaurantes</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/restaurantes">Restaurantes</Link>
+                            <Link className="nav-link" to="/pedidos">Pedidos</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Register/Login</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/DetalhesPedido">Detalhes Pedido</Link>
-                        </li>
                     </ul>
-
                 </div>
             </div>
         </nav>

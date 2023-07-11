@@ -10,16 +10,14 @@ function Pratos() {
     fetchPratos();
   }, []);
 
+  //fetch dos pratos pelo restauranteId
   async function fetchPratos() {
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
 
-    fetch(
-      `https://alix-dweb.azurewebsites.net/api/PratosAPI?restauranteId=${restauranteId}`,
-      requestOptions
-    )
+    fetch(`https://alix-dweb.azurewebsites.net/api/PratosAPI?restauranteId=${restauranteId}`, requestOptions)
       .then(res => res.json())
       .then(result => {
         setListaPratos(result);
@@ -30,10 +28,11 @@ function Pratos() {
       });
   }
 
+  //enviar os pratos para o carrinho de compra
   const handleAddToCart = prato => {
     setSelectedPrato(prato);
 
-    // Add the selected prato to DetalhesPedidosAPI
+    // Adiciona o  prato para os DetalhesPedidosAPI
     const newDetalhesPedido = {
       nomePrato: prato.nome,
       quantidade: 1, // Set the default quantity here
@@ -46,17 +45,18 @@ function Pratos() {
       body: JSON.stringify(newDetalhesPedido)
     };
 
-    fetch('https://localhost:7101/api/DetalhesPedidosAPI', requestOptions)  // Replace with the correct API URL for DetalhesPedidosAPI
+    fetch('https://alix-dweb.azurewebsites.net/api/DetalhesPedidosAPI', requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log('New DetalhePedido added:', data);
-        // Perform any additional logic or update the UI as needed
       })
       .catch(error => {
         console.log('Error adding DetalhePedido:', error);
       });
   };
 
+  console.log('listaPratos:', listaPratos);
+  
   const pratoItems = listaPratos.map(prato => (
     <div key={prato.nome} className="col-md-4 mb-4">
       <div className="card">

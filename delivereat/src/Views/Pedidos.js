@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import DetalhesPedidos from './DetalhesPedidos';
+import { Link } from 'react-router-dom';
+
 
 class Pedidos extends Component {
   constructor(props) {
@@ -15,7 +18,7 @@ class Pedidos extends Component {
 
   fetchPedidos() {
     // Make an API request to fetch all Pedidos
-    fetch('https://localhost:7101/api/PedidosAPI')
+    fetch('https://alix-dweb.azurewebsites.net/api/PedidosAPI')
       .then(response => response.json())
       .then(data => {
         this.setState({ pedidos: data });
@@ -45,7 +48,12 @@ class Pedidos extends Component {
           <div className="card-body">
             <h4 className="card-title">Pedido id: {pedido.id}</h4>
             <h5 className="card-subtitle mb-2 text-muted">Confirmed: {pedido.confirmed.toString()}</h5>
-            
+            {/* <Link
+                to={`/pratos/${DetalhesPedidos.id}`}
+                className="btn btn-primary"
+              >
+                Ver Detalhes
+            </Link> */}
           </div>
         </div>
       </div>
